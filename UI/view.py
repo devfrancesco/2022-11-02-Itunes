@@ -15,6 +15,7 @@ class View(ft.UserControl):
         self._dd_genere = None
         self._txt_min = None
         self._txt_max = None
+        self._txt_dTot = None
 
         self._btn_crea_grafo = None
         self._btn_playlist = None
@@ -27,6 +28,7 @@ class View(ft.UserControl):
         self._dd_genere = ft.Dropdown(label="Genere", hint_text="Seleziona un genere", width=300)
         self._btn_crea_grafo = ft.ElevatedButton(text="Crea Grafo", on_click=self._controller.handleCreaGrafo,
                                                  width=200)
+        self._controller.fillDDGeneri()
 
         row1 = ft.Row([self._dd_genere, self._btn_crea_grafo],
                       alignment=ft.MainAxisAlignment.CENTER,
@@ -35,10 +37,11 @@ class View(ft.UserControl):
 
         self._txt_min = ft.TextField(label="Min (secondi)", hint_text="Durata minima", width=145)
         self._txt_max = ft.TextField(label="Max (secondi)", hint_text="Durata massima", width=145)
+        self._txt_dTot = ft.TextField(label="Duarata (minuti)", hint_text="Durata massima", width=145)
         self._btn_playlist = ft.ElevatedButton(text="La mia playlist", on_click=self._controller.handlePlaylist,
                                                width=200)
 
-        row2 = ft.Row([self._txt_min, self._txt_max, self._btn_playlist],
+        row2 = ft.Row([self._txt_min, self._txt_max, self._txt_dTot, self._btn_playlist],
                       alignment=ft.MainAxisAlignment.CENTER,
                       vertical_alignment=ft.CrossAxisAlignment.END)
         self._page.controls.append(row2)
